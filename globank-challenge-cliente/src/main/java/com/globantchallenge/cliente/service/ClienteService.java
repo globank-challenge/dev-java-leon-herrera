@@ -15,6 +15,6 @@ public interface ClienteService {
 		
 	public void eliminar(Cliente cliente);
 	
-	public List<Cliente> findAll();
+	public List<Cliente> listar();
 
 }

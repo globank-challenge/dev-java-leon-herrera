@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: globank-challenge-cuenta
+    
+server:  port: 9002
