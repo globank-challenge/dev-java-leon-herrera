@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: globank-challenge-cliente
+    
+server:
+  port: 9001
