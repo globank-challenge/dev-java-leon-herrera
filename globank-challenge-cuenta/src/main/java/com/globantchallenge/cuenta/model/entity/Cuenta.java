@@ -12,6 +12,8 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Data
 @AllArgsConstructor
@@ -26,19 +28,19 @@ public class Cuenta implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	public Long cuentaId;
 
 	@Column(name = "numero_cuenta")
-	private String numeroCuenta;
+	public String numeroCuenta;
 	
 	@Column(name = "tipo_cuenta")
-	private String tipoCuenta;
+	public String tipoCuenta;
 	
 	@Column(name =  "saldo_inicial")
-	private Double saldoInicial;
+	public Double saldoInicial;
 	
 	@Column(name = "estado")
-	private Boolean estado;
+	public Boolean estado;
 
 	private static final long serialVersionUID = 7258922994301755560L;
 }

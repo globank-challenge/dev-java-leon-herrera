@@ -28,13 +28,13 @@ public class Cliente extends Persona implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long clienteId;
+	public Long clienteId;
 	
 	@Column(name = "contrasenia")
-	private String contraseña;
+	public String contrasenia;
 	
 	@Column(name = "estado")
-	private Boolean estado;
+	public Boolean estado;
 	
 	private static final long serialVersionUID = 6787197296979690274L;
 }
