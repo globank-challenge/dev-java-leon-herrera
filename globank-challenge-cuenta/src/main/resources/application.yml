@@ -3,3 +3,8 @@ spring:
     name: globank-challenge-cuenta
     
 server:  port: 9002
+ 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka 
