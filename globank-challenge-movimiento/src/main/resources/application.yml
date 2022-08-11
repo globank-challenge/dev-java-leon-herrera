@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: globank-challenge-movimiento
+    
+server:
+  port: 9003

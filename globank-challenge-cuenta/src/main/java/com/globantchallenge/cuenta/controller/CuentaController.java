@@ -25,7 +25,7 @@ public class CuentaController {
 	@PostMapping(
 			value = "/crear",
 			consumes = {MediaType.APPLICATION_JSON_VALUE})
-	public void crear(@RequestBody Cuenta cuenta) {
+	public void crear(@RequestBody Cuenta cuenta) throws Exception{
 		cuentaService.crear(cuenta);
 	}
 	
@@ -36,21 +36,21 @@ public class CuentaController {
 	@PutMapping(
 			value = "/actualizar",
 			consumes = {MediaType.APPLICATION_JSON_VALUE})
-	public void actualizar(@RequestBody Cuenta cuenta) {
+	public void actualizar(@RequestBody Cuenta cuenta) throws Exception{
 		cuentaService.actualizar(cuenta);
 	}
 	
 	@DeleteMapping(
 			value = "/eliminar",
 			consumes = {MediaType.APPLICATION_JSON_VALUE})
-	public void eliminar(@RequestBody Cuenta cuenta) {
+	public void eliminar(@RequestBody Cuenta cuenta) throws Exception{
 		cuentaService.eliminar(cuenta);
 	}
 	
 	@GetMapping(
 			value = "/listar",
 			produces = {MediaType.APPLICATION_JSON_VALUE})
-	public List<Cuenta> listar(){
+	public List<Cuenta> listar() throws Exception{
 		return (List<Cuenta>) cuentaService.listar();
 	}
 

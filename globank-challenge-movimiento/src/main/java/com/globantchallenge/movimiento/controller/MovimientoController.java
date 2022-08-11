@@ -1,4 +1,4 @@
-package com.globantchallenge.cliente.controller;
+package com.globantchallenge.movimiento.controller;
 
 import java.util.List;
 
@@ -12,46 +12,42 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.globantchallenge.cliente.model.entity.Cliente;
-import com.globantchallenge.cliente.service.ClienteService;
+import com.globantchallenge.movimiento.model.entity.Movimiento;
+import com.globantchallenge.movimiento.service.MovimientoService;
 
 @RestController
-@RequestMapping(value = "/cliente")
-public class ClienteController {
-	
+@RequestMapping(value = "/movimiento")
+public class MovimientoController {
+
 	@Autowired
-	private ClienteService clienteService;
+	private MovimientoService movimientoService;
 	
 	@PostMapping(
-			value =  "/crear",
+			value = "/crear",
 			consumes = {MediaType.APPLICATION_JSON_VALUE})
-	public void crear(@RequestBody Cliente cliente) throws Exception{
-		clienteService.crear(cliente);
+	public void crear(@RequestBody Movimiento movimiento) throws Exception{
+		movimientoService.crear(movimiento);
 	}
-	
-	
-	public void editar(@RequestBody Cliente cliente) throws Exception{
-		clienteService.editar(cliente);
-	}
-	
+		
 	@PutMapping(
 			value = "/actualizar",
 			consumes = {MediaType.APPLICATION_JSON_VALUE})
-	public void actualizar(@RequestBody Cliente cliente) throws Exception{
-		clienteService.actualizar(cliente);
-	}	
-
+	public void actualizar(@RequestBody Movimiento movimiento) throws Exception{
+		movimientoService.actualizar(movimiento);
+	}
+	
 	@DeleteMapping(
 			value = "/eliminar",
 			consumes = {MediaType.APPLICATION_JSON_VALUE})
-	public void eliminar(@RequestBody Cliente cliente) throws Exception{
-		clienteService.eliminar(cliente);
+	public void eliminar(@RequestBody Movimiento movimiento) throws Exception{
+		movimientoService.eliminar(movimiento);
 	}
 	
 	@GetMapping(
 			value = "/listar",
 			produces = {MediaType.APPLICATION_JSON_VALUE})
-	public List<Cliente> listar() throws Exception{
-		return clienteService.listar();
+	public List<Movimiento> listar() throws Exception{
+		return (List<Movimiento>) movimientoService.listar();
 	}
+	
 }
