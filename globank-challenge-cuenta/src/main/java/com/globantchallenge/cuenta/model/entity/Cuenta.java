@@ -41,6 +41,9 @@ public class Cuenta implements Serializable{
 	
 	@Column(name = "estado")
 	public Boolean estado;
+	
+	@Column(name = "nombre")
+	public String nombre;
 
 	private static final long serialVersionUID = 7258922994301755560L;
 }
