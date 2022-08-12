@@ -33,9 +33,9 @@ public class MovimientoServiceImpl implements MovimientoService {
 	@Override
 	@Transactional(rollbackFor = { SQLException.class })
 	public void crear(Movimiento movimiento) throws MovimientoException, RestClientException {
-		if (ObjectUtils.isEmpty(movimiento) || movimiento.fecha.equals(null)
-				|| Strings.isNullOrEmpty(movimiento.tipoMovimiento) || movimiento.valor.equals(null)
-				|| movimiento.valor.equals(0) || movimiento.saldo.equals(null) || movimiento.saldo.equals(0))
+		if (ObjectUtils.isEmpty(movimiento) || Strings.isNullOrEmpty(movimiento.tipoMovimiento)
+				|| movimiento.valor.equals(null) || movimiento.valor.equals(0) || movimiento.saldo.equals(null)
+				|| movimiento.saldo.equals(0))
 			throw new MovimientoException(MOVIMIENTO_INFO_SERVICIO_CREAR_OBJETO_MOVIMIENTO_NULO_O_VACIO);
 		if (movimiento.valor <= 0)
 			throw new MovimientoException(MOVIMIENTO_INFO_SERVICIO_CREAR_OBJETO_VALOR_DEBE_SER_POSITIVO);
@@ -49,8 +49,10 @@ public class MovimientoServiceImpl implements MovimientoService {
 	@Override
 	@Transactional(rollbackFor = { SQLException.class })
 	public void actualizar(Movimiento movimiento) throws MovimientoException, RestClientException {
-		if(movimientoIdIgualACero(movimiento)) throw new MovimientoException(MOVIMIENTO_INFO_SERVICIO_ACTUALIZAR_ID_CUENTA_VACIO);
-		if(movimientoIdMenorACero(movimiento)) throw new MovimientoException(MOVIMIENTO_INFO_SERVICIO_ACTUALIZAR_ID_CUENTA_DEBE_SER_MAYOR_A_CERO);
+		if (movimientoIdIgualACero(movimiento))
+			throw new MovimientoException(MOVIMIENTO_INFO_SERVICIO_ACTUALIZAR_ID_CUENTA_VACIO);
+		if (movimientoIdMenorACero(movimiento))
+			throw new MovimientoException(MOVIMIENTO_INFO_SERVICIO_ACTUALIZAR_ID_CUENTA_DEBE_SER_MAYOR_A_CERO);
 		setFechaActual(movimiento);
 		movimientoDao.save(movimiento);
 	}
@@ -58,8 +60,10 @@ public class MovimientoServiceImpl implements MovimientoService {
 	@Override
 	@Transactional(rollbackFor = { SQLException.class })
 	public void eliminar(Movimiento movimiento) throws MovimientoException, RestClientException {
-		if(movimientoIdIgualACero(movimiento)) throw new MovimientoException(MOVIMIENTO_INFO_SERVICIO_ELIMINAR_ID_CUENTA_VACIO);
-		if(movimientoIdMenorACero(movimiento)) throw new MovimientoException(MOVIMIENTO_INFO_SERVICIO_ELIMINAR_ID_CUENTA_DEBE_SER_MAYOR_A_CERO);
+		if (movimientoIdIgualACero(movimiento))
+			throw new MovimientoException(MOVIMIENTO_INFO_SERVICIO_ELIMINAR_ID_CUENTA_VACIO);
+		if (movimientoIdMenorACero(movimiento))
+			throw new MovimientoException(MOVIMIENTO_INFO_SERVICIO_ELIMINAR_ID_CUENTA_DEBE_SER_MAYOR_A_CERO);
 		movimientoDao.delete(movimiento);
 	}
 
@@ -67,7 +71,9 @@ public class MovimientoServiceImpl implements MovimientoService {
 	@Transactional(readOnly = true)
 	public List<Movimiento> listar() throws MovimientoException, RestClientException {
 		List<Movimiento> movimientoList = (List<Movimiento>) movimientoDao.findAll();
-		if(movimientoList.isEmpty()) throw new MovimientoException(MOVIMIENTO_INFO_SERVICIO_CONSULTAR_TODO_CUENTA_NO_HAY_EXISTENCIA_DE_REGISTROS);
+		if (movimientoList.isEmpty())
+			throw new MovimientoException(
+					MOVIMIENTO_INFO_SERVICIO_CONSULTAR_TODO_CUENTA_NO_HAY_EXISTENCIA_DE_REGISTROS);
 		return movimientoList;
 	}
 
