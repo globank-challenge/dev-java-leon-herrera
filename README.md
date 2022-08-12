@@ -21,6 +21,10 @@ De manera alternativa también están funcionales las APIs sin uso de api-gatewa
 * http://localhost:9002/cuenta
 * http://localhost:9003/movimiento
 
+## Eureka server endpoint
+### http://localhost:8761/
+#### Aquí se muestra el estado de los microservicios, el número de instancias y más métricas asociadas
+
 ## globank-challenge-cliente
 ### Cliente endpoint 1:listar
 * http://localhost:8090/apigateway-cliente/cliente/listar
@@ -257,13 +261,13 @@ N/A
 
 ### Base de datos
 * Para la persistencia se usó la base de datos en memoria H2
-* El llenado de las tablas se hace al levantar los respectivos microservicios, donde automaticamente se ejecuta el script import.sql para llenar cada tabla
+* El llenado de las tablas se hace al levantar los respectivos microservicios, donde automaticamente se ejecuta el script import.sql que hace parte de los para llenar cada tabla
 
 ### Prerequisites
 Se debe contar con las siguientes herramientas
 * Java 11 o mayor (JDK).
-* git command line tool (https://help.github.com/articles/set-up-git)
-* IDE of preference
+* git command line tool (https://help.github.com/articles/set-up-git), development es la branch actualizada 
+* IDE de preferencia
   * [Spring Tools Suite](https://spring.io/tools) (STS)
   * Eclipse IDE
   * [VS Code](https://code.visualstudio.com)
