@@ -29,11 +29,6 @@ public class ClienteController {
 		clienteService.crear(cliente);
 	}
 	
-	
-	public void editar(@RequestBody Cliente cliente) throws Exception{
-		clienteService.editar(cliente);
-	}
-	
 	@PutMapping(
 			value = "/actualizar",
 			consumes = {MediaType.APPLICATION_JSON_VALUE})

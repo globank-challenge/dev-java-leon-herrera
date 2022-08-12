@@ -15,6 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.globantchallenge.cuenta.model.entity.Cuenta;
 import com.globantchallenge.cuenta.service.CuentaService;
 
+/**
+ * Controlador de transacciones para cuenta
+ * @author leon.herrera
+ *
+ */
 @RestController
 @RequestMapping(value = "/cuenta")
 public class CuentaController {
@@ -27,10 +32,6 @@ public class CuentaController {
 			consumes = {MediaType.APPLICATION_JSON_VALUE})
 	public void crear(@RequestBody Cuenta cuenta) throws Exception{
 		cuentaService.crear(cuenta);
-	}
-	
-	public void editar(@RequestBody Cuenta cuenta) {
-		cuentaService.editar(cuenta);
 	}
 	
 	@PutMapping(
