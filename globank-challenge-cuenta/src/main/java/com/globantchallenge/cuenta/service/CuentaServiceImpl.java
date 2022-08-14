@@ -33,7 +33,7 @@ public class CuentaServiceImpl implements CuentaService {
 	public void crear(Cuenta cuenta) throws CuentaException, RestClientException {
 		if (ObjectUtils.isEmpty(cuenta) || Strings.isNullOrEmpty(cuenta.numeroCuenta)
 				|| Strings.isNullOrEmpty(cuenta.tipoCuenta) || cuenta.saldoInicial.equals(null)
-				|| cuenta.saldoInicial.equals(0) || cuenta.estado.equals(null) || Strings.isNullOrEmpty(cuenta.nombre))
+				|| cuenta.saldoInicial.equals(0D) || cuenta.saldoInicial < 0 || ObjectUtils.isEmpty(cuenta.estado) || Strings.isNullOrEmpty(cuenta.nombre))
 			throw new CuentaException(CUENTA_INFO_SERVICIO_CREAR_OBJETO_CUENTA_NULO_O_VACIO);
 		if(saldoInicialMenorOIgualACero(cuenta)) throw new CuentaException(CUENTA_INFO_SERVICIO_CREAR_OBJETO_SALDO_DEBE_SER_POSITIVO);
 		cuentaDao.save(cuenta);
@@ -64,7 +64,7 @@ public class CuentaServiceImpl implements CuentaService {
 	}
 
 	private Boolean cuentaIdIgualACero(Cuenta cuenta) {
-		return cuenta.cuentaId.equals(0);
+		return cuenta.cuentaId.equals(0L);
 	}
 
 	private Boolean cuentaIdMenorACero(Cuenta cuenta) {
