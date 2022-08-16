@@ -30,7 +30,7 @@ public class ClienteServiceImpl implements ClienteService{
 	@Override
 	@Transactional(rollbackFor = {SQLException.class})
 	public void crear(Cliente cliente) throws ClienteException, RestClientException {
-		if(ObjectUtils.isEmpty(cliente) || Strings.isNullOrEmpty(cliente.contrasenia) || cliente.estado.equals(null)) throw new ClienteException(CLIENTE_INFO_SERVICIO_CREAR_OBJETO_CLIENTE_NULO_O_VACIO);
+		if(ObjectUtils.isEmpty(cliente) || Strings.isNullOrEmpty(cliente.contrasenia) || ObjectUtils.isEmpty(cliente.estado)) throw new ClienteException(CLIENTE_INFO_SERVICIO_CREAR_OBJETO_CLIENTE_NULO_O_VACIO);
 		clienteDao.save(cliente);
 	}
 
@@ -54,12 +54,12 @@ public class ClienteServiceImpl implements ClienteService{
 	@Transactional(readOnly = true)
 	public List<Cliente> listar() throws ClienteException, RestClientException{
 		List<Cliente> clienteList = (List<Cliente>) clienteDao.findAll();
-		if(clienteList.isEmpty()) throw new ClienteException(CLIENTE_INFO_SERVICIO_CONSULTAR_TODO_NO_HAY_EXISTENCIA_DE_REGISTROS);
+		if(clienteList.isEmpty() || clienteList == null) throw new ClienteException(CLIENTE_INFO_SERVICIO_CONSULTAR_TODO_NO_HAY_EXISTENCIA_DE_REGISTROS);
 		return clienteList;
 	}
 	
 	private Boolean clienteIdIgualACero (Cliente cliente) {
-		return cliente.clienteId.equals(0);
+		return cliente.clienteId.equals(0L);
 	}
 
 	private Boolean clienteIdMenorACero (Cliente cliente) {

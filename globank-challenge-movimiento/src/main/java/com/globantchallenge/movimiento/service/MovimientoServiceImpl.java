@@ -35,7 +35,7 @@ public class MovimientoServiceImpl implements MovimientoService {
 	public void crear(Movimiento movimiento) throws MovimientoException, RestClientException {
 		if (ObjectUtils.isEmpty(movimiento) || Strings.isNullOrEmpty(movimiento.tipoMovimiento)
 				|| movimiento.valor.equals(null) || movimiento.valor.equals(0) || movimiento.saldo.equals(null)
-				|| movimiento.saldo.equals(0))
+				|| movimiento.saldo.equals(0D) || movimiento.saldo < 0)
 			throw new MovimientoException(MOVIMIENTO_INFO_SERVICIO_CREAR_OBJETO_MOVIMIENTO_NULO_O_VACIO);
 		if (movimiento.valor <= 0)
 			throw new MovimientoException(MOVIMIENTO_INFO_SERVICIO_CREAR_OBJETO_VALOR_DEBE_SER_POSITIVO);
@@ -83,7 +83,7 @@ public class MovimientoServiceImpl implements MovimientoService {
 	}
 
 	private Boolean movimientoIdIgualACero(Movimiento movimiento) {
-		return movimiento.movimientoId.equals(0);
+		return movimiento.movimientoId.equals(0L);
 	}
 
 	private Boolean movimientoIdMenorACero(Movimiento movimiento) {
